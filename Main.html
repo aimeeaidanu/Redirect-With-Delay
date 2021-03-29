@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Redirect Page using setInterval Method</title>
+<style>
+	input, p {
+    	font: 17px Calibri;
+        padding: 3px 5px;
+    }
+</style>
+</head>
+<body>
+	<h3 style="font: 17px Calibri;">
+    	Redirect page using setInterval Method.
+    </h3>
+    
+	<input type='button' id='bt' 
+    	onclick='redirect_Page(this)' value='Redirect Page'>
+        
+	<!--     show time lapsed. -->
+    <p id='msg'></p>
+</body>
+<script>
+    // Using ES6 feature.
+    
+    let redirect_Page = (ele) => {
+       	ele.disabled = true;
+        let iCnt = 25;	// for time in seconds.
+        
+        let iTimerId = setInterval(function () {
+			document.getElementById ('msg').innerHTML = 'redirecting in ' + iCnt + ' seconds';
+            
+            iCnt--;     // decrease counter by 1.
+            
+            if (iCnt === 0) {
+                // now, redirect page.
+                window.location.href = 'https://www.w3schools.com/';
+                clearInterval(iTimerId);		// clear time interval.
+            }
+        }, 1000);
+    }
+</script>
+</html>
